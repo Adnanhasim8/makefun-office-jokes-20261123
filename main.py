@@ -15,6 +15,9 @@ JOKE = (
 def main() -> None:
     output = Path("/output/entry.txt")
     output.parent.mkdir(parents=True, exist_ok=True)
+    # Gate: the joke must be exactly one line of under 200 characters.
+    assert 1 <= len(JOKE) < 200
+    assert "\n" not in JOKE
     # No trailing newline: the file is exactly the joke, one line, nothing else.
     output.write_text(JOKE, encoding="utf-8")
 
